@@ -56,6 +56,8 @@
       };
       // Add the layer control box
       var layerControl = L.control.layers(baseMaps).addTo(map);
+      // add data
+      L.geoJSON(data).addTo(map);
     </script>
   </body>
 </html>
