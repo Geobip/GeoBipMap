@@ -32,6 +32,31 @@
         height: 100%;
         width: 100%;
       }
+
+      .marker-cluster-small {
+        background-color: rgba(10, 153, 65, 0.6);
+        opacity: 1;
+      }
+      .marker-cluster-small div {
+        background-color: rgba(10, 153, 65, 0.6);
+        opacity: 1;
+      }
+      .marker-cluster-medium {
+        background-color: rgba(206, 22, 22, 0.6);
+        opacity: 1;
+      }
+      .marker-cluster-medium div {
+        background-color: rgba(206, 22, 22, 0.6);
+        opacity: 1;
+      }
+      .marker-cluster-large {
+        background-color: rgba(53, 17, 232, 0.6);
+        opacity: 1;
+      }
+      .marker-cluster-large div {
+        background-color: rgba(53, 17, 232, 0.6);
+        opacity: 1;
+      }
     </style>
   </head>
 
@@ -69,7 +94,28 @@
       // L.geoJSON(data).addTo(map);
 
       // add clusters
-      var markers = L.markerClusterGroup({ showCoverageOnHover: false });
+      var markers = L.markerClusterGroup({
+        maxClusterRadius: 120,
+        iconCreateFunction: function (cluster) {
+          var childCount = cluster.getChildCount();
+
+          var c = " marker-cluster-";
+          if (childCount < 10) {
+            c += "small";
+          } else if (childCount < 100) {
+            c += "medium";
+          } else {
+            c += "large";
+          }
+
+          return new L.DivIcon({
+            html: "<div><span>" + childCount + "</span></div>",
+            className: "marker-cluster" + c,
+            iconSize: new L.Point(40, 40),
+          });
+        },
+        showCoverageOnHover: false,
+      });
       var marker = L.geoJSON(data);
       markers.addLayer(marker);
       map.addLayer(markers);
