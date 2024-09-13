@@ -4,8 +4,17 @@
     <title>GeobipMap</title>
 
     <link rel="stylesheet" href="css/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\MarkerCluster.Default.css"
+    />
     <script src="js/leaflet.js"></script>
-
+    <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\src\MarkerCluster.js"></script>
+    <script src="Leaflet.markercluster-1.4.1\Leaflet.markercluster-1.4.1\dist\leaflet.markercluster-src.js"></script>
     //Call the projection biblio
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.2/proj4.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.1/proj4leaflet.js"></script>
@@ -57,7 +66,13 @@
       // Add the layer control box
       var layerControl = L.control.layers(baseMaps).addTo(map);
       // add data
-      L.geoJSON(data).addTo(map);
+      // L.geoJSON(data).addTo(map);
+
+      // add clusters
+      var markers = L.markerClusterGroup({ showCoverageOnHover: false });
+      var marker = L.geoJSON(data);
+      markers.addLayer(marker);
+      map.addLayer(markers);
     </script>
   </body>
 </html>
