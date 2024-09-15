@@ -93,32 +93,32 @@
       // add data
       // L.geoJSON(data).addTo(map);
 
-      // add clusters
-      var markers = L.markerClusterGroup({
+      // add clusters for marrakechdata
+      var markersMarrakech = L.markerClusterGroup({
         maxClusterRadius: 120,
-        iconCreateFunction: function (cluster) {
-          var childCount = cluster.getChildCount();
-
-          var c = " marker-cluster-";
-          if (childCount < 10) {
-            c += "small";
-          } else if (childCount < 100) {
-            c += "medium";
-          } else {
-            c += "large";
-          }
-
-          return new L.DivIcon({
-            html: "<div><span>" + childCount + "</span></div>",
-            className: "marker-cluster" + c,
-            iconSize: new L.Point(40, 40),
-          });
-        },
         showCoverageOnHover: false,
       });
-      var marker = L.geoJSON(data);
-      markers.addLayer(marker);
-      map.addLayer(markers);
+      var marker1 = L.geoJSON(dataMarrakech);
+      markersMarrakech.addLayer(marker1);
+      map.addLayer(markersMarrakech);
+
+      // add clusters for Casablanca Data
+      var markersCasablanca = L.markerClusterGroup({
+        maxClusterRadius: 120,
+        showCoverageOnHover: false,
+      });
+      var markerCasablanca = L.geoJSON(dataCasablanca);
+      markersCasablanca.addLayer(markerCasablanca);
+      map.addLayer(markersCasablanca);
+
+      // add clusters for tanger data
+      var markersTanger = L.markerClusterGroup({
+        maxClusterRadius: 120,
+        showCoverageOnHover: false,
+      });
+      var markerTanger = L.geoJSON(dataTanger);
+      markersTanger.addLayer(markerTanger);
+      map.addLayer(markersTanger);
     </script>
   </body>
 </html>

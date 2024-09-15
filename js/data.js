@@ -1,4 +1,4 @@
-const data = {
+const dataMarrakech = {
   type: "FeatureCollection",
   features: [
     {
@@ -232,6 +232,12 @@ const data = {
         coordinates: [-7.9879, 31.6212],
       },
     },
+  ],
+};
+
+const dataCasablanca = {
+  type: "FeatureCollection",
+  features: [
     {
       type: "Feature",
       properties: {
@@ -408,6 +414,99 @@ const data = {
         coordinates: [-7.6046, 33.591],
       },
     },
+    {
+      type: "Feature",
+      properties: {
+        name: "Bouskoura Forest",
+        city: "Bouskoura",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.6341, 33.4605],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Bouskoura Golf City",
+        city: "Bouskoura",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.6204, 33.462],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Bouskoura Central Park",
+        city: "Bouskoura",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.6265, 33.4589],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Bouskoura Town Hall",
+        city: "Bouskoura",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.622, 33.4575],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Bouskoura Market",
+        city: "Bouskoura",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.628, 33.46],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Mohammedia Beach",
+        city: "Mohammedia",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.3848, 33.7103],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Parc de Mohammedia",
+        city: "Mohammedia",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.386, 33.713],
+      },
+    },
+    {
+      type: "Feature",
+      properties: {
+        name: "Mohammedia Marina",
+        city: "Mohammedia",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [-7.3882, 33.7155],
+      },
+    },
+  ],
+};
+const dataTanger = {
+  type: "FeatureCollection",
+  features: [
     {
       type: "Feature",
       properties: {
@@ -648,94 +747,6 @@ const data = {
       geometry: {
         type: "Point",
         coordinates: [-5.798, 35.7765],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Bouskoura Forest",
-        city: "Bouskoura",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.6341, 33.4605],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Bouskoura Golf City",
-        city: "Bouskoura",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.6204, 33.462],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Bouskoura Central Park",
-        city: "Bouskoura",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.6265, 33.4589],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Bouskoura Town Hall",
-        city: "Bouskoura",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.622, 33.4575],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Bouskoura Market",
-        city: "Bouskoura",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.628, 33.46],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Mohammedia Beach",
-        city: "Mohammedia",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.3848, 33.7103],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Parc de Mohammedia",
-        city: "Mohammedia",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.386, 33.713],
-      },
-    },
-    {
-      type: "Feature",
-      properties: {
-        name: "Mohammedia Marina",
-        city: "Mohammedia",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-7.3882, 33.7155],
       },
     },
   ],
