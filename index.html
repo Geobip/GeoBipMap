@@ -20,6 +20,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4leaflet/1.0.1/proj4leaflet.js"></script>
     <!-- Add data file a featurecollection of locations in json -->
     <script src="js/data.js"></script>
+    <script src="js/boundaries.js"></script>
+    <script src="js/moroccoBnd.js"></script>
 
     <style>
       body {
@@ -81,6 +83,7 @@
       var map = L.map("map", {
         center: [33.606204, -7.630979],
         zoom: 6,
+        minZoom: 6,
         layers: gmap,
       });
       // Add the Object that contain base layers
@@ -92,7 +95,7 @@
       var layerControl = L.control.layers(baseMaps).addTo(map);
       // add data
       // L.geoJSON(data).addTo(map);
-
+      /*
       // add clusters for marrakechdata
       var markersMarrakech = L.markerClusterGroup({
         maxClusterRadius: 120,
@@ -101,7 +104,7 @@
       var marker1 = L.geoJSON(dataMarrakech);
       markersMarrakech.addLayer(marker1);
       map.addLayer(markersMarrakech);
-
+      
       // add clusters for Casablanca Data
       var markersCasablanca = L.markerClusterGroup({
         maxClusterRadius: 120,
@@ -118,7 +121,43 @@
       });
       var markerTanger = L.geoJSON(dataTanger);
       markersTanger.addLayer(markerTanger);
-      map.addLayer(markersTanger);
+      map.addLayer(markersTanger);*/
+      // function that create a clustermarker for a specific data
+      function addClusterGroup(data) {
+        var markers = L.markerClusterGroup({
+          maxClusterRadius: 120,
+          showCoverageOnHover: false,
+        });
+        var marker = L.geoJSON(data);
+        markers.addLayer(marker);
+        map.addLayer(markers);
+      }
+      // Add markercluster for each region/city
+      addClusterGroup(dataTanger);
+      addClusterGroup(dataCasablanca);
+      addClusterGroup(dataMarrakech);
+      //L.geoJSON(boundaries).addTo(map);
+      L.geoJSON(boundaries, {
+        style: function (feature) {
+          return {
+            color: "grey", // Outline color
+            weight: 2, // Outline weight
+            opacity: 1, // Outline opacity
+            fillColor: "Grey", // Fill color
+            fillOpacity: 1, // Fill opacity
+          };
+        },
+      }).addTo(map);
+
+      L.geoJSON(marocLimit, {
+        style: function (feature) {
+          return {
+            color: "green", // Outline color
+            weight: 4, // Outline weight
+            opacity: 1, // Outline opacity
+          };
+        },
+      }).addTo(map);
     </script>
   </body>
 </html>
