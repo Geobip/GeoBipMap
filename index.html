@@ -34,7 +34,6 @@
         height: 100%;
         width: 100%;
       }
-
       .marker-cluster-small {
         background-color: rgba(10, 153, 65, 0.6);
         opacity: 1;
@@ -49,7 +48,7 @@
       }
       .marker-cluster-medium div {
         background-color: rgba(206, 22, 22, 0.6);
-        opacity: 1;
+        opacity: 0.6;
       }
       .marker-cluster-large {
         background-color: rgba(53, 17, 232, 0.6);
@@ -95,22 +94,41 @@
       var layerControl = L.control.layers(baseMaps).addTo(map);
       // add data
       // L.geoJSON(data).addTo(map);
-      /*
+
+      // Oneachfeature function  pop for each marker
+      function onEachFeature(feature, layer) {
+        // does this feature have a property named popupContent?
+        if (feature.properties && feature.properties.name) {
+          layer.bindPopup(
+            feature.properties.name +
+              "<p>Projet x </p>" +
+              "<img  src=https://www.alomrane.gov.ma/var/alomrane/storage/images/alomrane/notre-reseau/al-omrane-tanger-tetouan-al-hoceima/produits/projets/amal-targuist/7740117-13-fre-FR/AMAL-TARGUIST.jpg> " +
+              "<a href=https://example.com>Website</a>", //  img link should be aded to the gejson data CSS mochkil same for description
+            {
+              maxWidth: "auto",
+            }
+          );
+        }
+      }
       // add clusters for marrakechdata
       var markersMarrakech = L.markerClusterGroup({
         maxClusterRadius: 120,
         showCoverageOnHover: false,
       });
-      var marker1 = L.geoJSON(dataMarrakech);
-      markersMarrakech.addLayer(marker1);
+      var markermarrakech = L.geoJSON(dataMarrakech, {
+        onEachFeature: onEachFeature,
+      });
+      markersMarrakech.addLayer(markermarrakech);
       map.addLayer(markersMarrakech);
-      
+
       // add clusters for Casablanca Data
       var markersCasablanca = L.markerClusterGroup({
         maxClusterRadius: 120,
         showCoverageOnHover: false,
       });
-      var markerCasablanca = L.geoJSON(dataCasablanca);
+      var markerCasablanca = L.geoJSON(dataCasablanca, {
+        onEachFeature: onEachFeature,
+      });
       markersCasablanca.addLayer(markerCasablanca);
       map.addLayer(markersCasablanca);
 
@@ -119,23 +137,27 @@
         maxClusterRadius: 120,
         showCoverageOnHover: false,
       });
-      var markerTanger = L.geoJSON(dataTanger);
+      var markerTanger = L.geoJSON(dataTanger, {
+        onEachFeature: onEachFeature,
+      });
       markersTanger.addLayer(markerTanger);
-      map.addLayer(markersTanger);*/
+      map.addLayer(markersTanger);
+
       // function that create a clustermarker for a specific data
-      function addClusterGroup(data) {
-        var markers = L.markerClusterGroup({
-          maxClusterRadius: 120,
-          showCoverageOnHover: false,
-        });
-        var marker = L.geoJSON(data);
-        markers.addLayer(marker);
-        map.addLayer(markers);
-      }
-      // Add markercluster for each region/city
-      addClusterGroup(dataTanger);
-      addClusterGroup(dataCasablanca);
-      addClusterGroup(dataMarrakech);
+      /*function addClusterGroup(data) {
+              var markers = L.markerClusterGroup({
+                maxClusterRadius: 120,
+                showCoverageOnHover: false,
+              });
+              var marker = L.geoJSON(data);
+              markers.addLayer(marker);
+              map.addLayer(markers);
+            }
+            // Add markercluster for each region/city
+            addClusterGroup(dataTanger);
+            addClusterGroup(dataCasablanca);
+            addClusterGroup(dataMarrakech);*/
+
       //L.geoJSON(boundaries).addTo(map);
       L.geoJSON(boundaries, {
         style: function (feature) {
@@ -148,7 +170,7 @@
           };
         },
       }).addTo(map);
-
+      // add moroccan boundary in green
       L.geoJSON(marocLimit, {
         style: function (feature) {
           return {
