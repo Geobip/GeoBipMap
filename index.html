@@ -58,6 +58,23 @@
         background-color: rgba(53, 17, 232, 0.6);
         opacity: 1;
       }
+      .legend {
+        font-size: 16px;
+        line-height: 24px;
+        color: #333333;
+        font-family: "Open Sans", Helvetica, sans-serif;
+        padding: 10px 14px;
+        background-color: rgba(204, 207, 200, 0.134);
+
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 25px;
+        max-width: 250px;
+        border: 1px solid grey;
+      }
+      .legend p {
+        font-size: 20px;
+        line-height: 30px;
+      }
     </style>
   </head>
 
@@ -234,6 +251,21 @@
           };
         },
       }).addTo(map);
+      //add legend
+      var legend = L.control({ position: "bottomright" });
+      legend.onAdd = function (map) {
+        var div = L.DomUtil.create("div", "legend");
+        div.innerHTML =
+          '<img src="markerThree.png" width="20%" ="40">' +
+          "<p style=display:inline-block>Groupe de Projet</p>" +
+          '<img src="markerOne.png" width="20%" ="40">' +
+          "<p style=display:inline-block >    Lot de terrain</p>" +
+          "<br>" +
+          '<img src="markerTwo.png" width="20%" ="40">' +
+          "<p style=display:inline-block>  Appartement  </p>";
+        return div;
+      };
+      legend.addTo(map);
     </script>
   </body>
 </html>
